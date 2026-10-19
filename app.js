@@ -11,21 +11,29 @@ function matches(w, text) {
   return text.toLowerCase().split(/\s+/).filter(Boolean).every(t => hay.includes(t));
 }
 
+const card = w => `
+  <article class="card" id="${[w.brand, w.family, w.year].join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}">
+    <h2>${esc(w.family)}${w.year ? ' ' + esc(w.year) : ''}</h2>
+    <p class="models">${esc(w.brand)} · ${esc(w.models.join(' · '))}</p>
+    <ol>
+      ${w.steps.map(s => `
+        <li>
+          <div><span class="symptom">${esc(s.symptom)}</span><strong>${esc(s.title)}</strong></div>
+          <code>${esc(s.menu)}</code>
+          <div class="value">${esc(s.setting)}: <b>${esc(s.value)}</b></div>
+        </li>`).join('')}
+    </ol>
+  </article>`;
+
 function render(list) {
   count.textContent = `${list.length} walkthrough${list.length === 1 ? '' : 's'}`;
-  results.innerHTML = list.map(w => `
-    <article class="card" id="${[w.brand, w.family, w.year].join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}">
-      <h2>${esc(w.brand)} ${esc(w.family)}${w.year ? ' ' + esc(w.year) : ''}</h2>
-      <p class="models">${esc(w.models.join(' · '))}</p>
-      <ol>
-        ${w.steps.map(s => `
-          <li>
-            <div><span class="symptom">${esc(s.symptom)}</span><strong>${esc(s.title)}</strong></div>
-            <code>${esc(s.menu)}</code>
-            <div class="value">${esc(s.setting)}: <b>${esc(s.value)}</b></div>
-          </li>`).join('')}
-      </ol>
-    </article>`).join('') || '<p class="empty">No matching walkthroughs yet — try another brand, model, or symptom.</p>';
+  const groups = {};
+  list.forEach(w => (groups[w.brand] ??= []).push(w));
+  results.innerHTML = Object.entries(groups).map(([brand, ws]) => `
+    <section class="brand-group">
+      <h2 class="brand">${esc(brand)}</h2>
+      <div class="families">${ws.map(card).join('')}</div>
+    </section>`).join('') || '<p class="empty">No matching walkthroughs yet — try another brand, model, or symptom.</p>';
 }
 
 q.addEventListener('input', () => {
