@@ -6,10 +6,14 @@ header p { margin: .25rem 0 .75rem; color: #555; }
 #count { color: #777; font-size: .85rem; margin: .5rem 0; }
 details.brand-group { margin: 1rem 0; }
 summary.brand { font-size: 1.3rem; font-weight: 700; cursor: pointer; border-bottom: 2px solid #e2e2e2; padding-bottom: .3rem; }
-.families { margin-left: 1.25rem; border-left: 2px solid #eee; padding-left: 1rem; }
+details.family { margin: .6rem 0; }
+summary.family { font-weight: 600; font-size: 1.05rem; cursor: pointer; }
+details.model { margin: .5rem 0; }
+summary.model { cursor: pointer; }
 details.step { margin: .7rem 0; }
 details.step summary { cursor: pointer; }
 details.step .step-body { margin-top: .3rem; }
+.brand-body, .family-body { margin-left: 1rem; border-left: 2px solid #eee; padding-left: 1rem; }
 .card { background: #fff; border: 1px solid #e2e2e2; border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; }
 .card h2 { margin: 0; font-size: 1.15rem; }
 .models { color: #777; font-size: .85rem; margin: .2rem 0 .5rem; }
