@@ -26,11 +26,11 @@ const card = (w, open) => `
   <details class="family" ${open} id="${[w.brand, w.family, w.year].join('-').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}">
     <summary class="family">${esc(w.family)}${w.year ? ' ' + esc(w.year) : ''} · ${w.models.length} models</summary>
     <div class="family-body">
-      ${w.models.map(m => `
-        <details class="model" ${open}>
-          <summary class="model">${esc(m)}</summary>
-          <div class="model-body"><ol>${w.steps.map(s => step(s, open)).join('')}</ol></div>
-        </details>`).join('')}
+      <details class="models-group" ${open}>
+        <summary class="models-summary">Models</summary>
+        <ul class="model-list">${w.models.map(m => `<li>${esc(m)}</li>`).join('')}</ul>
+      </details>
+      <ol>${w.steps.map(s => step(s, open)).join('')}</ol>
     </div>
   </details>`;
 
