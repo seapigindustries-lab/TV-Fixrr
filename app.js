@@ -18,7 +18,7 @@ const card = w => `
     <ol>
       ${w.steps.map(s => `
         <li>
-          <details open class="step">
+          <details class="step">
             <summary><span class="symptom">${esc(s.symptom)}</span><strong>${esc(s.title)}</strong></summary>
             <div class="step-body">
               <code>${esc(s.menu)}</code>
@@ -34,7 +34,7 @@ function render(list) {
   const groups = {};
   list.forEach(w => (groups[w.brand] ??= []).push(w));
   results.innerHTML = Object.entries(groups).map(([brand, ws]) => `
-    <details open class="brand-group">
+    <details class="brand-group">
       <summary class="brand">${esc(brand)}</summary>
       <div class="families">${ws.map(card).join('')}</div>
     </details>`).join('') || '<p class="empty">No matching walkthroughs yet — try another brand, model, or symptom.</p>';
