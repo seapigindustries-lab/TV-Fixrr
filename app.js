@@ -18,9 +18,13 @@ const card = w => `
     <ol>
       ${w.steps.map(s => `
         <li>
-          <div><span class="symptom">${esc(s.symptom)}</span><strong>${esc(s.title)}</strong></div>
-          <code>${esc(s.menu)}</code>
-          <div class="value">${esc(s.setting)}: <b>${esc(s.value)}</b></div>
+          <details open class="step">
+            <summary><span class="symptom">${esc(s.symptom)}</span><strong>${esc(s.title)}</strong></summary>
+            <div class="step-body">
+              <code>${esc(s.menu)}</code>
+              <div class="value">${esc(s.setting)}: <b>${esc(s.value)}</b></div>
+            </div>
+          </details>
         </li>`).join('')}
     </ol>
   </article>`;
@@ -30,10 +34,10 @@ function render(list) {
   const groups = {};
   list.forEach(w => (groups[w.brand] ??= []).push(w));
   results.innerHTML = Object.entries(groups).map(([brand, ws]) => `
-    <section class="brand-group">
-      <h2 class="brand">${esc(brand)}</h2>
+    <details open class="brand-group">
+      <summary class="brand">${esc(brand)}</summary>
       <div class="families">${ws.map(card).join('')}</div>
-    </section>`).join('') || '<p class="empty">No matching walkthroughs yet — try another brand, model, or symptom.</p>';
+    </details>`).join('') || '<p class="empty">No matching walkthroughs yet — try another brand, model, or symptom.</p>';
 }
 
 q.addEventListener('input', () => {
