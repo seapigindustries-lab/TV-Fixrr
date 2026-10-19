@@ -3,7 +3,7 @@ const results = document.getElementById('results');
 const count = document.getElementById('count');
 const walkthroughs = SITE_DATA.walkthroughs;
 
-const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function matches(w, text) {
   const hay = [w.brand, w.family, w.year, ...w.models,
