@@ -1,0 +1,66 @@
+name: Report incorrect instructions
+description: Report a wrong menu path, setting name, or value — or propose corrected steps
+title: "[Report] "
+labels: ["report", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve TV Fixrr. Fill in as much as you can — every field you complete makes the fix faster.
+  - type: input
+    id: brand
+    attributes:
+      label: Brand
+      placeholder: e.g. Samsung
+    validations:
+      required: true
+  - type: input
+    id: family
+    attributes:
+      label: Model family
+      placeholder: e.g. QN90F Neo QLED
+    validations:
+      required: true
+  - type: input
+    id: step
+    attributes:
+      label: Which step is wrong?
+      placeholder: e.g. "Turn off motion interpolation"
+    validations:
+      required: true
+  - type: textarea
+    id: whats-wrong
+    attributes:
+      label: What's wrong with the current instructions?
+      description: The current menu path/setting/value that needs correction
+    validations:
+      required: true
+  - type: textarea
+    id: corrected-steps
+    attributes:
+      label: Corrected steps (optional)
+      description: Step-by-step replacement. Numbered, one action per step.
+      placeholder: |
+        1. Press Settings on remote
+        2. Navigate to Picture → Expert Settings
+        3. Set Picture Clarity → Off
+    validations:
+      required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence (optional)
+      description: Photo of your TV menu, manual page, RTINGS calibration page, etc.
+    validations:
+      required: false
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Completely wrong path
+        - Setting name changed
+        - Value is wrong
+        - Cosmetic (wording/formatting)
+    validations:
+      required: true
