@@ -32,3 +32,5 @@ footer { color: #999; font-size: .8rem; margin: 2rem 0 1rem; }
 .logo { display: inline-flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; border-radius: 4px; color: #fff; font-weight: 700; font-size: .8em; margin-right: .4em; vertical-align: middle; }
 .report { display: inline-block; margin-top: .3rem; font-size: .78rem; color: #a30000; text-decoration: none; }
 .report:hover { text-decoration: underline; }
+.add-tv { display: inline-block; margin-top: .4rem; font-size: .85rem; color: #0a7d2c; text-decoration: none; }
+.add-tv:hover { text-decoration: underline; }

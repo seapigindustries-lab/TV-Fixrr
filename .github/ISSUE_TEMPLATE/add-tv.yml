@@ -1,0 +1,60 @@
+name: Add missing TV
+description: Request a new brand, model family, or model number to be added to the database
+title: "[Add TV] "
+labels: ["add-tv", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping grow TV Fixrr. The more detail you provide, the faster this gets added.
+  - type: input
+    id: brand
+    attributes:
+      label: Brand
+      placeholder: e.g. Samsung
+    validations:
+      required: true
+  - type: input
+    id: family
+    attributes:
+      label: Model family / series
+      placeholder: e.g. QN95C Neo QLED
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Model year
+      placeholder: e.g. 2023
+    validations:
+      required: true
+  - type: textarea
+    id: models
+    attributes:
+      label: Model numbers
+      description: One per line, as printed on the back of the TV
+      placeholder: |
+        QN55QN95C
+        QN65QN95C
+        QN75QN95C
+    validations:
+      required: true
+  - type: textarea
+    id: menu-layout
+    attributes:
+      label: Menu layout (optional but hugely helpful)
+      description: Where do key settings live on this TV? Motion smoothing, energy saving, auto volume, picture mode.
+      placeholder: |
+        Motion: Settings → Picture → Expert Settings → Clarity → Auto Motion Plus
+        Energy: Settings → General → Eco Solution
+        Volume: Settings → Sound → Expert Settings → Auto Volume
+        Picture modes: Filmmaker, Standard, Vivid
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Region, OS (Tizen / webOS / Google TV / Roku / Fire TV / VIDAA), where you saw it, etc.
+    validations:
+      required: false
